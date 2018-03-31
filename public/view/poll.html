@@ -1,0 +1,67 @@
+    <div class="container">
+        <div class="row row-content" ng-controller="PollController">
+            <div class="col-xs-12" ng-if="!showPoll">
+                <h3>{{message}}</h3>
+            </div>
+            
+            
+            <div class="media col-xs-12 col-md-4" ng-if="showPoll">
+                    <div class="media-body">
+                        <h2 class="media-heading">{{poll.name}}</h2>
+                    </div>
+                    <div class="media col-xs-12 col-md-12 col-lg-12">
+                        
+                        <form class="form-horizontal" name="voteForm" ng-submit="send_my_vote(own_option)" novalidate>
+                            <label for="vote_option" class="control-label">I'd like to vote for...:</label>
+                            
+                            <div class="form-group">
+                                <div class="col-xs-12 col-sm-12 col-md-12">
+                                    <select ng-model="vote_option.vote" ng-click="show_own_option(vote_option.vote, own_option)"  class="form-control" required>
+                                        <option value="" disabled="disabled" selected="selected" hidden="">Choose an option...: </option>
+                                        <option ng-repeat="item in vote_option.options" ng-selected="{{item==vote_option.vote}}" value="{{item}}">{{item}}</option>
+                                    </select>
+                                </div>
+                                
+                                <div class="col-xs-12 col-sm-12 col-md-12" ng-show="show_custom">
+                                    <label class="control-label">Vote with my own option:</label></br>
+                                    <input type="text"  ng-model="own_option">
+                                </div> 
+                            </div> 
+                            
+                            
+                            <div class="form-group">
+                                <div class="col-sm-12 col-md-12 col-lg-12" style="margin:  0px 0 30px 0">
+                                    <button type="submit" class="btn btn-primary col-xs-12 col-sm-12 col-md-12" ng-disabled="voteForm.$invalid">Submit</button>
+                                </div>
+                            </div>
+                        </form>
+                        
+                        
+                        <div class="text-center" style="margin:  0px 0px 0px 0px">
+                            <div class="col-xs-4 col-sm-4 col-md-3"></div>
+
+                            <button type="submit" style="margin:  0px 0px 50px 0px"  ng-click="twitter_share()" class="btn btn-info text-center col-xs-4 col-sm-4 col-md-6" > Share on Twitter</button>
+
+                        </div>
+                    </div>
+            </div>            
+
+            
+            <div class="media col-xs-12 col-md-8" ng-if="showPoll" style="margin:  0px 0 0 0">
+                    <div class="media-body">
+                        <h2 class="media-heading">{{poll.name}}</h2>
+                    </div>
+                    <div class="media col-xs-8 col-md-8 col-lg-8 col-md-offset-2 col-xs-offset-2"  ng-if="showDonut">
+                        <canvas id="doughnut" class="chart chart-doughnut" chart-options="options"
+                            chart-data="data" chart-labels="labels">
+                        </canvas> 
+                    </div>
+                    
+                    <div class="col-sm-12 col-md-12 col-lg-12" style="margin:  80px 0 0 0" ng-if="showDeleteButton">
+                            <button ng-if="loggedIn" ng-click="delete_poll()" class="btn btn-danger col-xs-12 col-sm-12 col-md-12" >Remove this poll</button>
+                    </div>
+                    
+            </div>
+        </div>
+    </div>
+    

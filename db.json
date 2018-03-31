@@ -1,0 +1,16 @@
+
+{ "polls" : [
+    {"name":"colors", 
+    "number": 0,
+    "chart":{ "red": 10, "green": 2, "orange": 5  }
+    
+    },
+
+
+
+
+           {"name":"car", "number": 1},
+           {"name":"food", "number": 2},
+           {"name":"drink", "number": 3}
+           ]
+}

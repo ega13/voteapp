@@ -1,0 +1,22 @@
+    <div class="container">
+        <div class="row row-content" ng-controller="NewpollController">
+            <div class="media col-xs-12" >
+                    <div class="media col-xs-6 col-md-6 col-lg-6" ng-submit="addNewPoll()">
+                        <form role="form" class="ng-pristine ng-valid">
+                             <h1>Make a new poll!</h1>
+                             <div class="form-group">
+                                <label for="newpoll-title">Title: </label>
+                                <input class="form-control ng-pristine ng-valid ng-touched" type="text" ng-model="new_poll_name" ng-trim="true">
+                            </div>
+                            <div class="form-group">
+                                <label for="newpoll-options">Options (seperated by line): </label>
+                                    <textarea class="form-control ng-pristine ng-valid ng-touched" ng-model="new_poll_options" ng-list="" ng-trim="false" rows="4">
+                                    </textarea> 
+                            </div>
+                                <input type="submit" value="Make!" class="btn btn-primary">
+                        </form>
+
+                    </div>
+            </div>
+        </div>
+    </div>
